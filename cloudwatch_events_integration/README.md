@@ -20,15 +20,15 @@ Assuming you already have monitored AWS resources in LogicMonitor, you'll need t
 
 2. Add your LogicMonitor API Tokens as Lambda environment variables:
 
-    * Create or use an existing KMS Key - http://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html
+    * Create or use an existing KMS Key - http://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html. Ensure that the role auto-created for the logicmonitor-send-cloudwatch-events function deployed via the Serverless Application Repository has access to decrypt using this KMS key.
 
-    * Click the "Enable Encryption Helpers" checkbox
+    * Click the "Enable helpers for encryption in transit" checkbox & select your KMS key.
 
     * Paste the value of the Access Id in the API_ACCESS_ID environment variable and click encrypt.
 
     * Paste the value of the Access Key in the API_ACCESS_KEY environment variable and click encrypt.
 
-    * Provide your LogicMonitor account name as the value of the ACCOUNT_NAME environment variable and click encrypt.
+    * Provide your LogicMonitor account name as the value of the ACCOUNT_NAME environment variable (do not encrypt).
     
 
 3. Configure CloudWatch Events Rules to be used as triggers for the Lambda Function:
